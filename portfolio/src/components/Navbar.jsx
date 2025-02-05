@@ -66,7 +66,7 @@ const Navbar = () => {
           <a href="#project" className='text-white text-lg' onClick={toggleMenu}>Projects</a>
           <a href="#contact" className='text-white text-lg' onClick={toggleMenu}>Contact</a>
           <a 
-  href="https://resume-builder-test-new.masaischool.com/resume/public?resumeId=67936e8b565a02c8ebf1c684" 
+  href="https://resume-builder-test-new.masaischool.com/resume/public?resumeId=67a36735f97830ef5e99fc19" 
   className="text-white text-lg" 
   onClick={toggleMenu}
   target="_blank" 
