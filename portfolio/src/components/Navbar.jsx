@@ -29,21 +29,34 @@ const Navbar = () => {
     }
   }, [isMobile]);
 
+  // Resume file URL (Replace this with your own Google Drive or file link)
+  const resumeLink = "https://drive.google.com/uc?export=download&id=1dJUXZz6KVN6ysCDE6j7aIjr14dKdCvbm"; // Google Drive download link
+  const resumeViewLink = "https://drive.google.com/file/d/1dJUXZz6KVN6ysCDE6j7aIjr14dKdCvbm/view"; // Google Drive view link
+
+  // Function to handle opening the view and triggering the download
+  const handleResumeClick = () => {
+    // Open the Google Drive view link in a new tab
+    window.open(resumeViewLink, '_blank');
+    
+    // Trigger the download using window.location.href for the current tab
+    const link = document.createElement('a');
+    link.href = resumeLink;
+    link.download = 'Tauseef_Resume.pdf'; // Set the filename for download
+    document.body.appendChild(link);  // Append the link to the DOM
+    link.click();  // Trigger the download
+    document.body.removeChild(link); // Clean up the link element after triggering the download
+  };
+
   return (
     <nav className='bg-black text-white px-8 md:px-16 lg:px-24 fixed w-full top-0 left-0 z-50 shadow-lg'>
       <div className='container py-4 flex justify-between items-center'>
         {/* Logo */}
-        <div className='text-2xl font-bold'>Tauseef</div>
-
-        {/* Hamburger Icon - Positioned to the top-right on small screens */}
-        <div className='md:hidden flex items-center'>
-          <button onClick={toggleMenu} className='text-3xl focus:outline-none'>
-            {isMenuOpen ? '✖' : '☰'}
-          </button>
+        <div className='text-2xl font-bold'>
+          Tauseef
         </div>
 
-        {/* Desktop Navbar Links */}
-        <div className='space-x-14 md:flex hidden' >
+        {/* Desktop Navbar Links - Centered */}
+        <div className='space-x-14 md:flex hidden justify-center flex-grow'>
           <a href="#hero" className='hover:text-gray-400'>Home</a>
           <a href="#about" className='hover:text-gray-400'>About Me</a>
           <a href="#techstack" className="hover:text-gray-400">Tech-Stack</a>
@@ -51,10 +64,20 @@ const Navbar = () => {
           <a href="#contact" className='hover:text-gray-400'>Contact</a>
         </div>
 
-        {/* Desktop Resume Button */}
-        <a href="https://resume-builder-test-new.masaischool.com/resume/public?resumeId=67936e8b565a02c8ebf1c684"target="_blank"  className='bg-gradient-to-r from-green-400 to-blue-500 text-white hidden md:inline transform transition-transform duration-300 hover:scale-105 px-4 py-2 rounded-full'>
+        {/* Resume Button on the Right Side */}
+        <button 
+          onClick={handleResumeClick}
+          className='bg-gradient-to-r from-green-400 to-blue-500 text-white transform transition-transform duration-300 hover:scale-105 px-4 py-2 rounded-full hidden md:inline'
+        >
           Resume
-        </a>
+        </button>
+
+        {/* Hamburger Icon - Positioned to the top-right on small screens */}
+        <div className='md:hidden flex items-center'>
+          <button onClick={toggleMenu} className='text-3xl focus:outline-none'>
+            {isMenuOpen ? '✖' : '☰'}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -65,15 +88,25 @@ const Navbar = () => {
           <a href="#techstack" className='text-white text-lg' onClick={toggleMenu}>Tech-Stack</a>
           <a href="#project" className='text-white text-lg' onClick={toggleMenu}>Projects</a>
           <a href="#contact" className='text-white text-lg' onClick={toggleMenu}>Contact</a>
+
+          {/* Resume View & Download for Mobile */}
           <a 
-  href="https://resume-builder-test-new.masaischool.com/resume/public?resumeId=67a36735f97830ef5e99fc19" 
-  className="text-white text-lg" 
-  onClick={toggleMenu}
-  target="_blank" 
-  rel="noopener noreferrer"
->
-  Resume
-</a>
+            href={resumeViewLink} 
+            className="text-white text-lg" 
+            onClick={toggleMenu}
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            View Resume
+          </a>
+          <a 
+            href={resumeLink} 
+            className="text-white text-lg" 
+            onClick={toggleMenu}
+            download="Tauseef_Resume.pdf"
+          >
+            Download Resume
+          </a>
         </div>
       )}
     </nav>
