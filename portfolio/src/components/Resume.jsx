@@ -1,27 +1,32 @@
 import React from 'react';
+import { FaDownload } from 'react-icons/fa';
 
-const Resume = () => {
-  return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
-      <h1 className="text-4xl font-semibold text-center text-gray-800 mb-8">My Resume</h1>
+const Resume = ({ resumePath }) => {
+    const handleDownload = () => {
+        const link = document.createElement('a');
+        link.href = resumePath;
+        link.download = "resume.pdf";  // The file name to download
+        link.click();
+    };
 
-      {/* Resume Content */}
-      <div className="w-full max-w-4xl bg-white p-6 rounded-lg shadow-lg text-center">
-        <p className="text-lg text-gray-700 mb-6">
-          You can download my resume below. Feel free to check it out!
-        </p>
-        
-        {/* Download Button */}
-        <a
-          href="../assets/MuhammadTauseefRaza-FullStackWebDeveloper-1fRh.pdf"  // Make sure this points to your actual resume file
-          download
-          className="bg-blue-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105"
-        >
-          Download Resume
-        </a>
-      </div>
-    </div>
-  );
+    return (
+        <div className="relative w-full h-screen bg-gradient-to-b from-blue-600 to-blue-800">
+            {/* Show Resume PDF using iframe */}
+            <iframe
+                src={resumePath}
+                title="Resume"
+                className="w-full h-full border-none"
+            />
+            
+            {/* Download Button */}
+            <button
+                onClick={handleDownload}
+                className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-10 py-4 rounded-full shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+            >
+                <FaDownload className="inline-block mr-2" /> Download Resume
+            </button>
+        </div>
+    );
 };
 
 export default Resume;
