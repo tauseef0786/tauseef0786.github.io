@@ -30,14 +30,17 @@ const Navbar = () => {
   }, [isMobile]);
 
   // Resume file URL (Replace this with your own Google Drive or file link)
-  const resumeLink = "https://drive.google.com/file/d/1n0JmgODN2XeS3h43QucGOtrUrjHUXeCT/view?usp=sharing"; // Google Drive download link
+  const resumeLink = "https://drive.google.com/uc?export=download&id=1n0JmgODN2XeS3h43QucGOtrUrjHUXeCT"; // Google Drive download link
   const resumeViewLink = "https://drive.google.com/file/d/1n0JmgODN2XeS3h43QucGOtrUrjHUXeCT/view?usp=sharing"; // Google Drive view link
 
   // Function to handle opening the view and triggering the download
-  const handleResumeClick = () => {
+  const handleResumeClick = (e) => {
+    // Prevent the default behavior of anchor tag (if necessary)
+    e.preventDefault();
+
     // Open the Google Drive view link in a new tab
     window.open(resumeViewLink, '_blank');
-    
+
     // Trigger the download using window.location.href for the current tab
     const link = document.createElement('a');
     link.href = resumeLink;
@@ -90,23 +93,12 @@ const Navbar = () => {
           <a href="#contact" className='text-white text-lg' onClick={toggleMenu}>Contact</a>
 
           {/* Resume View & Download for Mobile */}
-          <a 
-            href={resumeViewLink} 
-            className="text-white text-lg" 
-            onClick={toggleMenu}
-            target="_blank" 
-            rel="noopener noreferrer"
+          <button 
+            onClick={handleResumeClick}
+            className="text-white text-lg"
           >
-            View Resume
-          </a>
-          <a 
-            href={resumeLink} 
-            className="text-white text-lg" 
-            onClick={toggleMenu}
-            download="Tauseef_Resume.pdf"
-          >
-            Download Resume
-          </a>
+            View & Download Resume
+          </button>
         </div>
       )}
     </nav>
