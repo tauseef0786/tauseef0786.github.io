@@ -30,8 +30,8 @@ const Navbar = () => {
   }, [isMobile]);
 
   // Resume file URL (Replace this with your own Google Drive or file link)
-  const resumeLink = "https://drive.google.com/uc?export=download&id=1dJUXZz6KVN6ysCDE6j7aIjr14dKdCvbm"; // Google Drive download link
-  const resumeViewLink = "https://drive.google.com/file/d/1dJUXZz6KVN6ysCDE6j7aIjr14dKdCvbm/view"; // Google Drive view link
+  const resumeLink = "https://drive.google.com/file/d/1n0JmgODN2XeS3h43QucGOtrUrjHUXeCT/view?usp=sharing"; // Google Drive download link
+  const resumeViewLink = "https://drive.google.com/file/d/1n0JmgODN2XeS3h43QucGOtrUrjHUXeCT/view?usp=sharing"; // Google Drive view link
 
   // Function to handle opening the view and triggering the download
   const handleResumeClick = () => {
