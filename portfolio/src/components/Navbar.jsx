@@ -29,26 +29,25 @@ const Navbar = () => {
     }
   }, [isMobile]);
 
-  // Resume file URL (Replace this with your own Google Drive or file link)
-  const resumeLink = "https://drive.google.com/file/d/1u842if2WjlgueymxjW8JhKQnikHvF6rl/view?usp=sharing"; // Google Drive download link
-  const resumeViewLink = "https://drive.google.com/file/d/1u842if2WjlgueymxjW8JhKQnikHvF6rl/view?usp=sharing"; // Google Drive view link
-
+  const resumeLink = "https://drive.google.com/uc?export=download&id=1u842if2WjlgueymxjW8JhKQnikHvF6rl"; // Direct download link
+  const resumeViewLink = "https://drive.google.com/file/d/1u842if2WjlgueymxjW8JhKQnikHvF6rl/view?usp=sharing"; // View link
+  
   // Function to handle opening the view and triggering the download
   const handleResumeClick = (e) => {
-    // Prevent the default behavior of anchor tag (if necessary)
     e.preventDefault();
-
-    // Open the Google Drive view link in a new tab
-    window.open(resumeViewLink, '_blank');
-
-    // Trigger the download using window.location.href for the current tab
+  
+    // Open the view link in a new tab
+    window.open(resumeViewLink, '_blank', 'noopener,noreferrer');
+  
+    // Create a temporary anchor for download
     const link = document.createElement('a');
     link.href = resumeLink;
-    link.download = 'Tauseef_Resume.pdf'; // Set the filename for download
-    document.body.appendChild(link);  // Append the link to the DOM
-    link.click();  // Trigger the download
-    document.body.removeChild(link); // Clean up the link element after triggering the download
+    link.setAttribute('download', 'Tauseef_Resume.pdf');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
+  
 
   return (
     <nav className='bg-black text-white px-8 md:px-16 lg:px-24 fixed w-full top-0 left-0 z-50 shadow-lg'>
