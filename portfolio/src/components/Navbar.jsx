@@ -29,8 +29,8 @@ const Navbar = () => {
     }
   }, [isMobile]);
 
-  const resumeLink = "https://drive.google.com/uc?export=download&id=1u842if2WjlgueymxjW8JhKQnikHvF6rl"; // Direct download link
-  const resumeViewLink = "https://drive.google.com/file/d/1u842if2WjlgueymxjW8JhKQnikHvF6rl/view?usp=sharing"; // View link
+  const resumeLink = "https://drive.google.com/file/d/1tykaQ6Sb_7EiVKI1Pzm8pBWxA1esj5Gk/view?usp=sharing"; // Direct download link
+  const resumeViewLink = "https://drive.google.com/file/d/1tykaQ6Sb_7EiVKI1Pzm8pBWxA1esj5Gk/view?usp=sharing"; // View link
   
   // Function to handle opening the view and triggering the download
   const handleResumeClick = (e) => {
